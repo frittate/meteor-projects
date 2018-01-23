@@ -27,6 +27,7 @@ Meteor.startup(() => {
             }
         }).fetch(); //converting the DB into an array!
         let title = 'Score Keep';
-        ReactDOM.render(<App title={title} players={players}/>,document.getElementById('app'));
+        let subTitle = 'Made by frittate';
+        ReactDOM.render(<App title={title} subTitle={subTitle} players={players}/>,document.getElementById('app'));
     });
 });
