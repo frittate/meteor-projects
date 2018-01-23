@@ -7,6 +7,18 @@ import {Players} from './../imports/api/players';
 
 import App from './../imports/ui/App';
 
+import WebFont from 'webfontloader';
+
+WebFont.load({
+  google: {
+    families: [
+      'Nunito:regular,bold',
+      'Lato:regular,bold,italic',
+      'Roboto:light,regular,bold',
+    ],
+  },
+});
+
 Meteor.startup(() => {
     Tracker.autorun(() => {
         let players = Players.find({}, {
