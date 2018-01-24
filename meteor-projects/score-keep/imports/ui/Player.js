@@ -4,14 +4,26 @@ import {Players} from './../api/players';
 
 export default class Player extends React.Component{
     render(){
+        let itemClassName = `item item--position-${this.props.player.rank}`;
+        
         return(
-            <div key={this.props.player._id} className="item">
-                <p>
-                    {this.props.player.name} has {this.props.player.score} point(s).
+            <div key={this.props.player._id} className={itemClassName}>
+              <div className="player">
+              <div>
+                <h3 className="player__name">{this.props.player.name}</h3>
+                <p className="player__stats">
+                    {this.props.player.position} place with
+                    {this.props.player.score===1||this.props.player.score===-1 ?  
+                        ` ${this.props.player.score} point.` : 
+                        ` ${this.props.player.score} points.`}
                 </p>
-                    <button className="button button--round" onClick={() => Players.update(this.props.player._id,{$inc: {score: 1}})}>+1</button>
-                    <button className="button button--round" onClick={() => Players.update(this.props.player._id,{$inc: {score: -1}})}>-1</button>
-                    <button className="button button--round" onClick={() => Players.remove(this.props.player._id)}>X</button>
+              </div>
+              <div className="player__actions">
+                <button className="button button--round" onClick={() => Players.update(this.props.player._id,{$inc: {score: 1}})}><i className="fa fa-plus"></i></button>
+                <button className="button button--round" onClick={() => Players.update(this.props.player._id,{$inc: {score: -1}})}><i className="fa fa-minus"></i></button>
+                <button className="button button--round" onClick={() => Players.remove(this.props.player._id)}><i className="fa fa-trash-o"></i></button>
+              </div>
+             </div>
             </div>
         );
     }

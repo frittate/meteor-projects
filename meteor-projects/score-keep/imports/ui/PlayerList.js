@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Player from './Player';
 
+import FlipMove from 'react-flip-move';
+
 export default class PlayerList extends React.Component {
     renderPlayers(){
         //console.log(this.props.players.length);
@@ -22,8 +24,11 @@ export default class PlayerList extends React.Component {
     render(){
         return (
             <div>
-                {this.renderPlayers()}
+                <FlipMove maintainContainerHeight={true} easing="ease">
+                  {this.renderPlayers()}
+                </FlipMove>
             </div>
+            
         )
     }
 }
